@@ -75,7 +75,7 @@ public class ListTest {
 
 	@Test
 	public void addAllWithSet() {
-		Set smallSet = new Set();
+		AbstractCollection smallSet = new Set();
 		smallSet.add("Dave");
 		oneElement.addAll(smallSet);
 		assertEquals(2, oneElement.size());
