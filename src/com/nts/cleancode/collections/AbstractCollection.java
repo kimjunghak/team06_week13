@@ -1,6 +1,6 @@
 package com.nts.cleancode.collections;
 
-public abstract class AbstractCollection implements Collection {
+public abstract class AbstractCollection{
 	protected static int INITIAL_CAPACITY = 10;
 	protected Object[] elements = new Object[INITIAL_CAPACITY];
 	protected int size = 0;
@@ -8,29 +8,15 @@ public abstract class AbstractCollection implements Collection {
 
 	public void addAll(AbstractCollection c) {
 		if (c instanceof Set) {
-			AbstractCollection s = (AbstractCollection)c;
-			for (int i=0; i < s.size(); i++) {
-				if (!contains(s.getElementAt(i))) {
-					add(s.getElementAt(i));
-				}
-			}
-			
-		} else if (c instanceof List) {
-			AbstractCollection l = (AbstractCollection)c;
-			for (int i=0; i < l.size(); i++) {
-				if (!contains(l.getElementAt(i))) {
-					add(l.getElementAt(i));
-				}
-			}
-		} else if (c instanceof Map) {
-			Map m = (Map)c;
-			for (int i=0; i<m.size(); i++) 
-				add(m.keys[i], m.values[i]);			
+			for (int i=0; i < c.size(); i++)
+				if (!contains(c.getElementAt(i)))
+					add(c.getElementAt(i));
 		}
 	}
-	
-	public void add(Object key, Object value) {
-	}
+
+	/**
+	 * @param m
+	 */
 
 	public boolean isEmpty() {
 		return size == 0;

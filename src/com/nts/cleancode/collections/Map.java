@@ -7,9 +7,10 @@ public class Map extends AbstractCollection {
 	public boolean isEmpty() {
 		return size == 0;
 	}
-
-	// Do nothing because user must input key and value
-	public void add(Object element) {
+	
+	protected void addAll(Map m) {
+		for (int i=0; i<m.size(); i++) 
+			add(m.keys[i], m.values[i]);
 	}
 
 	public void add(Object key, Object value) {
