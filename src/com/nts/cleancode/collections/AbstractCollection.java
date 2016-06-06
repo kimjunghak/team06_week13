@@ -16,7 +16,7 @@ public abstract class AbstractCollection implements Collection {
 			}
 			
 		} else if (c instanceof List) {
-			List l = (List)c;
+			AbstractCollection l = (AbstractCollection)c;
 			for (int i=0; i < l.size(); i++) {
 				if (!contains(l.getElementAt(i))) {
 					add(l.getElementAt(i));
@@ -83,5 +83,40 @@ public abstract class AbstractCollection implements Collection {
 
 	public void setReadOnly(boolean b) {
 		readOnly = b;
+	}
+
+	public void add(Object element) {
+		if (readOnly)
+			return;
+		
+		if (shouldGrow())
+			grow();
+		
+		addElement(element);
+	
+	}
+
+	/**
+	 * @param element
+	 */
+	protected void addElement(Object element) {
+		elements[size++] = element;
+	}
+
+	/**
+	 * 
+	 */
+	protected void grow() {
+		Object[] newElements = new Object[elements.length + 10];
+		for (int i = 0; i < size; i++)
+			newElements[i] = elements[i];
+		elements = newElements;
+	}
+
+	/**
+	 * @return
+	 */
+	protected boolean shouldGrow() {
+		return size + 1 > elements.length;
 	}
 }
