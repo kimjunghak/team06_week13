@@ -54,8 +54,8 @@ public class List extends AbstractCollection {
 		return false;
 	}
 	
-	public Object get(int i) {
-		return elements[i];
+	public Object getElementAt(int index) {
+		return elements[index];
 	}
 
 	public int capacity() {

@@ -64,7 +64,7 @@ public class ListTest {
 		assertEquals(3, manyElement.size());
 		manyElement.remove("sasha");
 		assertEquals(2, manyElement.size());
-		assertEquals("tracy", manyElement.get(1));
+		assertEquals("tracy", manyElement.getElementAt(1));
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class ListTest {
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void getWhenIndexOutOfBounds() {
-		empty.get(12);
+		empty.getElementAt(12);
 	}
 
 	@Test
@@ -99,7 +99,7 @@ public class ListTest {
 	@Test
 	public void override() {
 		oneElement.set(0, "mary");
-		assertEquals("mary", oneElement.get(0));
+		assertEquals("mary", oneElement.getElementAt(0));
 	}
 
 	@Test
@@ -123,7 +123,7 @@ public class ListTest {
 	public void readOnlyOnSet() {
 		oneElement.setReadOnly(true);
 		oneElement.set(0, "eva");
-		assertEquals("sophia", oneElement.get(0));
+		assertEquals("sophia", oneElement.getElementAt(0));
 	}
 
 	@Test

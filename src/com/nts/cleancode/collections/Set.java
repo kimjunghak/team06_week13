@@ -63,8 +63,8 @@ public class Set extends AbstractCollection {
 
 	public void addAll(List l) {
 		for (int i = 0; i < l.size(); i++) {
-			if (!contains(l.get(i)))
-				elements[size++] = l.get(i);
+			if (!contains(l.getElementAt(i)))
+				elements[size++] = l.getElementAt(i);
 		}
 	}
 

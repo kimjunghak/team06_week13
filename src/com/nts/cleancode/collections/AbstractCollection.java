@@ -13,8 +13,8 @@ public abstract class AbstractCollection implements Collection {
 		} else if (c instanceof List) {
 			List l = (List)c;
 			for (int i=0; i < l.size(); i++) {
-				if (!contains(l.get(i))) {
-					add(l.get(i));
+				if (!contains(l.getElementAt(i))) {
+					add(l.getElementAt(i));
 				}
 			}
 		} else if (c instanceof Map) {
