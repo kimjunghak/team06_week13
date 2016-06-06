@@ -1,17 +1,15 @@
 package com.nts.cleancode.collections;
 
-public abstract class AbstractCollection{
+public abstract class AbstractCollection {
 	protected static int INITIAL_CAPACITY = 10;
 	protected Object[] elements = new Object[INITIAL_CAPACITY];
 	protected int size = 0;
 	protected boolean readOnly;
 
 	public void addAll(AbstractCollection c) {
-		if (c instanceof Set) {
-			for (int i=0; i < c.size(); i++)
-				if (!contains(c.getElementAt(i)))
-					add(c.getElementAt(i));
-		}
+		for (int i = 0; i < c.size(); i++)
+			if (!contains(c.getElementAt(i)))
+				add(c.getElementAt(i));
 	}
 
 	/**
@@ -74,12 +72,12 @@ public abstract class AbstractCollection{
 	public void add(Object element) {
 		if (readOnly)
 			return;
-		
+
 		if (shouldGrow())
 			grow();
-		
+
 		addElement(element);
-	
+
 	}
 
 	/**
